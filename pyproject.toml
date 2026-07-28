@@ -8,13 +8,14 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
-    "fastapi (>=0.139.0,<0.140.0)",
+    "fastapi[standard] (>=0.140.7,<0.141.0)",
     "pydantic (>=2.13.4,<3.0.0)",
     "uvicorn (>=0.51.0,<0.52.0)",
     "pytest (>=9.1.1,<10.0.0)",
     "ruff (>=0.15.21,<0.16.0)",
     "black (>=26.5.1,<27.0.0)",
-    "polars (>=1.42.1,<2.0.0)"
+    "polars (>=1.42.1,<2.0.0)",
+    "statsbombpy (>=1.21.0,<2.0.0)"
 ]
 
 
