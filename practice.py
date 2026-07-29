@@ -38,3 +38,20 @@ def is_settlement_late(trade_date, settlement_date):
 
 print(is_settlement_late(1, 5))
 print(is_settlement_late(1, 2))
+
+trade_gaps = [1, 3, 5, 2, 7]
+
+for gap in trade_gaps:
+    print(gap)
+
+trades = [(1, 5), (2, 3), (10, 11), (1, 8)]
+
+for trade in trades:
+    trade_date = trade[0]
+    settlement_date = trade[1]
+    late = is_settlement_late(trade_date, settlement_date)
+    print(late)
+
+print(trade_gaps[0])
+print(trade_gaps[1])
+print(trade_gaps[4])
