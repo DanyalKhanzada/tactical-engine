@@ -28,12 +28,12 @@
 #     print("on time")
 
 
-# def is_settlement_late(trade_date, settlement_date):
-#     gap = settlement_date - trade_date
-#     if gap > 2:
-#         return True
-#     else:
-#         return False
+def is_settlement_late(trade_date, settlement_date):
+    gap = settlement_date - trade_date
+    if gap > 2:
+        return True
+    else:
+        return False
 
 
 # print(is_settlement_late(1, 5))
@@ -57,12 +57,24 @@
 # print(trade_gaps[4])
 
 
-trade = {
-    "trade_date": 1,
-    "settlement_date": 5,
-    "amount_usd": 1000,
-    "counterparty": "Broker A"
-}
+# trade = {
+#     "trade_date": 1,
+#     "settlement_date": 5,
+#     "amount_usd": 10000,
+#     "counterparty": "Broker A"
+# }
 
-print(trade["counterparty"])
-print(trade["amount_usd"])
+# print(trade["counterparty"])
+# print(trade["amount_usd"])
+
+trades = [
+    {"trade_date": 1, "settlement_date": 5, "amount_usd": 10000},
+    {"trade_date": 2, "settlement_date": 3, "amount_usd": 5000},
+    {"trade_date": 10, "settlement_date": 11, "amount_usd": 25000},
+]
+
+for trade in trades:
+    trade_date = trade["trade_date"]
+    settlement_date = trade["settlement_date"]
+    late = is_settlement_late(trade_date, settlement_date)
+    print(trade["amount_usd"], "-> late:", late)
