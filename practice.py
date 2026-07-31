@@ -1,5 +1,8 @@
-# def greet(person_name):
-#     return "Hello, " + person_name + "!"
+from pydantic import BaseModel
+
+
+def greet(person_name):
+    return "Hello, " + person_name + "!"
 
 
 # print(greet("Danny"))
@@ -14,9 +17,9 @@
 # print(convert_cad_to_usd(100, 0.73))
 
 
-# def add_tax(price, tax_rate):
-#     total_price = price + (price * tax_rate)
-#     return total_price
+def add_tax(price, tax_rate):
+    total_price = price + (price * tax_rate)
+    return total_price
 
 
 # print(add_tax(100, 0.13))
@@ -78,3 +81,48 @@ for trade in trades:
     settlement_date = trade["settlement_date"]
     late = is_settlement_late(trade_date, settlement_date)
     print(trade["amount_usd"], "-> late:", late)
+
+
+class Trade:
+    def __init__(self, trade_date, settlement_date, amount_usd):
+        self.trade_date = trade_date
+        self.settlement_date = settlement_date
+        self.amount_usd = amount_usd
+
+
+t1 = Trade(1, 5, 10000)
+t2 = Trade(2, 3, 5000)
+print(t1.trade_date)
+print(t1.amount_usd)
+print(t2.trade_date)
+print(t2.amount_usd)
+
+
+class MetricRequirement(BaseModel):
+    metric_name: str
+    threshold: float
+    weight: float
+
+
+class RoleProfile(BaseModel):
+    position: str
+    formation: str
+    tactical_toggles: dict
+    requirements: list[MetricRequirement]
+
+
+req1 = MetricRequirement(metric_name="tackles_per90",
+                         threshold=2.0, weight=1.5)
+req2 = MetricRequirement(
+    metric_name="progressive_passes_per90", threshold=3.0, weight=1.0)
+
+profile = RoleProfile(
+    position="CDM",
+    formation="4-3-3",
+    tactical_toggles={},
+    requirements=[req1, req2]
+)
+
+print(profile.requirements)
+print(profile.requirements[0])
+print(profile.requirements[0].metric_name)
