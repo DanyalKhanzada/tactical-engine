@@ -103,3 +103,40 @@ print(trade_dates)
 
 small_trades = [t for t in trades if t["amount_usd"] < 8000]
 print(small_trades)
+
+trade = {"amount_usd": 10000}
+print(trade.get("amount_usd"))
+print(trade.get("counterparty"))
+print(trade.get("counterparty", "Unknown"))
+
+side_a = [
+    {"trade_id": "T1", "amount_usd": 10000},
+    {"trade_id": "T2", "amount_usd": 5000},
+    {"trade_id": "T3", "amount_usd": 25000},
+    {"trade_id": "T4", "amount_usd": 7000},
+]
+
+side_b = [
+    {"trade_id": "T1", "amount_usd": 10000},
+    {"trade_id": "T2", "amount_usd": 5500},
+    {"trade_id": "T3", "amount_usd": 25000},
+]
+
+side_b_lookup = {}
+for trade in side_b:
+    side_b_lookup[trade["trade_id"]] = trade
+
+print(side_b_lookup)
+
+for trade in side_a:
+    trade_id = trade["trade_id"]
+    amount_a = trade["amount_usd"]
+    matching_trade = side_b_lookup.get(trade_id)
+
+    if matching_trade is None:
+        print(f"Missing on side_b: {trade_id}")
+        continue
+
+    amount_b = matching_trade["amount_usd"]
+    if amount_a != amount_b:
+        print(f"Break on {trade_id}: side_a={amount_a}, side_b={amount_b}")
