@@ -5,30 +5,9 @@ def greet(person_name):
     return "Hello, " + person_name + "!"
 
 
-# print(greet("Danny"))
-# print(greet("Vardaah"))
-
-
-# def convert_cad_to_usd(cad_amount, exchange_rate):
-#     usd_amount = cad_amount * exchange_rate
-#     return usd_amount
-
-
-# print(convert_cad_to_usd(100, 0.73))
-
-
 def add_tax(price, tax_rate):
     total_price = price + (price * tax_rate)
     return total_price
-
-
-# print(add_tax(100, 0.13))
-
-# gap = 5
-# if gap > 2:
-#     print("late")
-# else:
-#     print("on time")
 
 
 def is_settlement_late(trade_date, settlement_date):
@@ -38,37 +17,6 @@ def is_settlement_late(trade_date, settlement_date):
     else:
         return False
 
-
-# print(is_settlement_late(1, 5))
-# print(is_settlement_late(1, 2))
-
-# trade_gaps = [1, 3, 5, 2, 7]
-
-# for gap in trade_gaps:
-#     print(gap)
-
-# trades = [(1, 5), (2, 3), (10, 11), (1, 8)]
-
-# for trade in trades:
-#     trade_date = trade[0]
-#     settlement_date = trade[1]
-#     late = is_settlement_late(trade_date, settlement_date)
-#     print(late)
-
-# print(trade_gaps[0])
-# print(trade_gaps[1])
-# print(trade_gaps[4])
-
-
-# trade = {
-#     "trade_date": 1,
-#     "settlement_date": 5,
-#     "amount_usd": 10000,
-#     "counterparty": "Broker A"
-# }
-
-# print(trade["counterparty"])
-# print(trade["amount_usd"])
 
 trades = [
     {"trade_date": 1, "settlement_date": 5, "amount_usd": 10000},
@@ -134,14 +82,18 @@ class Player:
         self.position = position
         self.goals = goals
 
+    @classmethod
+    def new_player(cls, name, position):
+        return cls(name, position, 0)
+
 
 p1 = Player("Rodri", "CDM", 8)
-
 print(p1.name)
 print(p1.goals)
-# three slots: name (text), position (text), goals (number)
-
 print(f"{p1.name} plays {p1.position} and scored {p1.goals} goals")
+
+p3 = Player.new_player("Haaland", "ST")
+print(p3.goals)
 
 big_trades = [t for t in trades if t["amount_usd"] > 8000]
 print(big_trades)
@@ -149,5 +101,5 @@ print(big_trades)
 trade_dates = [t["trade_date"] for t in trades]
 print(trade_dates)
 
-small_trade = [t for t in trades if t["amount_usd"] < 8000]
-print(small_trade)
+small_trades = [t for t in trades if t["amount_usd"] < 8000]
+print(small_trades)
