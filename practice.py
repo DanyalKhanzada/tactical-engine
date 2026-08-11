@@ -126,3 +126,28 @@ profile = RoleProfile(
 print(profile.requirements)
 print(profile.requirements[0])
 print(profile.requirements[0].metric_name)
+
+
+class Player:
+    def __init__(self, name, position, goals):
+        self.name = name
+        self.position = position
+        self.goals = goals
+
+
+p1 = Player("Rodri", "CDM", 8)
+
+print(p1.name)
+print(p1.goals)
+# three slots: name (text), position (text), goals (number)
+
+print(f"{p1.name} plays {p1.position} and scored {p1.goals} goals")
+
+big_trades = [t for t in trades if t["amount_usd"] > 8000]
+print(big_trades)
+
+trade_dates = [t["trade_date"] for t in trades]
+print(trade_dates)
+
+small_trade = [t for t in trades if t["amount_usd"] < 8000]
+print(small_trade)
