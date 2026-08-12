@@ -140,3 +140,8 @@ for trade in side_a:
     amount_b = matching_trade["amount_usd"]
     if amount_a != amount_b:
         print(f"Break on {trade_id}: side_a={amount_a}, side_b={amount_b}")
+
+clock = "45:30"
+mm, ss = clock.split(":")
+print(mm)
+print(ss)
