@@ -1,3 +1,4 @@
+from statsbombpy import sb
 from pydantic import BaseModel
 
 
@@ -145,3 +146,10 @@ clock = "45:30"
 mm, ss = clock.split(":")
 print(mm)
 print(ss)
+
+
+matches = sb.matches(competition_id=11, season_id=90)
+match_id = matches["match_id"].iloc[0]
+events = sb.events(match_id=match_id)
+
+print(events.columns.tolist())
